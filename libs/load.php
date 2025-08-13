@@ -7,3 +7,4 @@ function load_template($name){
 }
 
 ?>
+
