@@ -1,5 +1,10 @@
 <?php 
-include 'libs/load.php';
+
+    include 'libs/load.php';
+
+    print_r("_POST");
+    print_r($_POST); 
+
 ?>
 
 
@@ -199,7 +204,13 @@ include 'libs/load.php';
     <main>
         <?php 
           load_template('_login');
+        //   print_r("_POST");
+        //   print_r($_POST);
         ?>
+        <!-- <?php 
+          //echo $username
+         ?> -->
+
     </main>
 
     <footer class="text-body-secondary py-5">
