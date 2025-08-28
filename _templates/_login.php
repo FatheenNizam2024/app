@@ -5,24 +5,21 @@ $password = $_POST['password'];
 $result = validate_credentials($username, $password);
 
 if ($result) {
-
-
     ?>
     <main class="container">
         <div class="bg-body-tertiary p-5 rounded mt-3">
             <h1>Login Successful</h1>
-            <p class="lead"> Welcome</p> <a
+            <p class="lead"> Welcome <?php echo $username ?></p> <a
                 class="btn btn-lg btn-primary" href="/docs/5.3/components/navbar" role="button">View navbar docs »</a>
         </div>
     </main>
+    
  <?php
-
     } else {    
 ?>
 
-
 <main class="form-signin w-100 m-auto">
-    <form method="post" action="login.php">
+    <form method="post" action="test.php">
         <img class="mb-4" src="https://marstech.lk/wp-content/uploads/2025/03/Mars-Logo.png" alt="" width="300"
             height="300">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
