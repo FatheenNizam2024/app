@@ -2,7 +2,7 @@
 $username = $_POST['email'];
 $password = $_POST['password'];
 
-$result = validate_credentials($username, $password);
+// $result = validate_credentials($username, $password);
 
 if ($result) {
     ?>

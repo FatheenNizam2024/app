@@ -4,12 +4,15 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Astro v5.9.2">
-    <title>login page</title>
+    <title><?php print(basename($_SERVER['PHP_SELF'],".php"));?> page</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
     <script src="./assets/js/color-modes.js"></script>
     <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta name="theme-color" content="#712cf9">
+    <link rel="stylesheet" href="./css/<?php print(basename($_SERVER['PHP_SELF'],".php"));?>.css">
+
     <style>
+        
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -90,4 +93,7 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important
         }
+
     </style>
+
+   
