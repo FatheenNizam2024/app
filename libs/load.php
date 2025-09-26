@@ -24,32 +24,36 @@ function load_template($name){
         $password = "200224501451";
         $dbname = "fatheen_newdb";
 
+        mysqli_report(MYSQLI_REPORT_OFF);
+
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
          //print ($conn);
         // Check connection
-        if ($conn===false) {
+        if ($conn->connect_error) {
+           // This is the line you want to see if the connection fails:
+           //die("Connection lost: " . $conn->connect_error); 
            echo "connected failed";
         }
         else{
-            echo "connected sucessfully";
+            echo "connected sucessfully   ";
         }
 
         $sql = "INSERT INTO `auth` (`id`, `username`, `password`, `email`, `phone`, `blocked`, `active`) 
         VALUES (NULL, '$Username', '$Password', '$email', '$phone', '0', '0')";
 
-        $result = false;
+        $error = false;
 
         if ($conn->query($sql) === TRUE) {
-        $result = false;
+        $error = false; // no errors
         } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-        $result = false;
+        //echo "Error: " . $sql . "<br>" . $conn->error;
+        $error = $conn->error;
         }
 
         $conn->close();
 
-        return $result;
+        return $error;
     }
 ?>
 

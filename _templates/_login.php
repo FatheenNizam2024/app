@@ -1,22 +1,24 @@
 <?php
-$username = $_POST['email'];
-$password = $_POST['password'];
+// $username = $_POST['email'];
+// $password = $_POST['password'];
+
+
 
 // $result = validate_credentials($username, $password);
 
-if ($result) {
-    ?>
-    <main class="container">
-        <div class="bg-body-tertiary p-5 rounded mt-3">
-            <h1>Login Successful</h1>
-            <p class="lead"> Welcome <?php echo $username ?></p> <a
-                class="btn btn-lg btn-primary" href="/docs/5.3/components/navbar" role="button">View navbar docs »</a>
-        </div>
-    </main>
+// if ($result) {
+//     ?>
+//     <main class="container">
+//         <div class="bg-body-tertiary p-5 rounded mt-3">
+//             <h1>Login Successful</h1>
+//             <p class="lead"> Welcome <?php echo $username ?></p> <a
+//                 class="btn btn-lg btn-primary" href="/docs/5.3/components/navbar" role="button">View navbar docs »</a>
+//         </div>
+//     </main>
     
- <?php
-    } else {    
-?>
+//  <?php
+//     } else {    
+// ?>
 
 <main class="form-signin w-100 m-auto">
     <form method="post" action="test.php">
@@ -43,5 +45,5 @@ if ($result) {
 
 
 <?php
-   }
+  // }
 ?>
