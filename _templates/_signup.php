@@ -7,8 +7,10 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email
     $password= $_POST['password'];
     $email= $_POST['email'];
     $phone= $_POST['phone'];
-    $error = signup($username, $password, $email, $phone);
+    $error = User::signup($username, $password, $email, $phone);
     $signup = true;
+    
+
 
 }
 
@@ -38,26 +40,26 @@ if($signup)
 else {
     ?>
         <main class="form-signin w-100 m-auto">
-    <form method="post" action="signup.php">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <img class="mb-4" src="https://marstech.lk/wp-content/uploads/2025/03/Mars-Logo.png" alt="" width="300"
             height="300">
         <h1 class="h3 mb-3 fw-normal">Signup Here</h1>
 
         <div class="form-floating">
             <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Type username">
-            <label for="floatingInput">Username</label>
+            <label for="floatingInput">Username</label> 
         </div>
         <div class="form-floating">
             <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Type Email">
-            <label for="floatingInput">Email Address</label>
+            <label for="floatingInput">Email Address</label> 
         </div>
         <div class="form-floating">
             <input name="phone" type="text" class="form-control" id="floatingInput" placeholder="Type Phone Number">
-            <label for="floatingInput">Phone Number</label>
+            <label for="floatingInput">Phone Number</label> 
         </div>
         <div class="form-floating">
             <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword">Password</label> 
         </div>
         <div class="form-check text-start my-3">
             <input class="form-check-input" type="checkbox" value="remember-me" id="checkDefault"> <label

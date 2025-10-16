@@ -1,5 +1,7 @@
 <?php 
 
+include_once __DIR__."/includes/database.class.php";
+include_once __DIR__."/includes/user.class.php";
 function load_template($name){
     //print("including $name.php");
     //include __DIR__."/../_templates/$name.php";
@@ -17,43 +19,46 @@ function load_template($name){
     // }
 
 
-    function signup ($Username, $Password, $email, $phone){
+     //function signup ($Username, $Password, $email, $phone){
         
-        $servername = "localhost";
-        $username = "fatheen-0037";
-        $password = "200224501451";
-        $dbname = "fatheen_newdb";
+    //     $servername = "localhost";
+    //     $username = "fatheen-0037";
+    //     $password = "200224501451";
+    //     $dbname = "fatheen_newdb";
 
-        mysqli_report(MYSQLI_REPORT_OFF);
+    //     mysqli_report(MYSQLI_REPORT_OFF);
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-         //print ($conn);
-        // Check connection
-        if ($conn->connect_error) {
-           // This is the line you want to see if the connection fails:
-           //die("Connection lost: " . $conn->connect_error); 
-           echo "connected failed";
-        }
-        else{
-            echo "connected sucessfully   ";
-        }
+    //     // Create connection
+    //     $conn = new mysqli($servername, $username, $password, $dbname);
+    //      //print ($conn);
+    //     // Check connection
+    //     if ($conn->connect_error) {
+    //        // This is the line you want to see if the connection fails:
+    //        //die("Connection lost: " . $conn->connect_error); 
+    //        echo "connected failed";
+    //     }
+    //     else{
+    //         echo "connected sucessfully   ";
+    //     }
 
-        $sql = "INSERT INTO `auth` (`id`, `username`, `password`, `email`, `phone`, `blocked`, `active`) 
-        VALUES (NULL, '$Username', '$Password', '$email', '$phone', '0', '0')";
+    //     $conn = Database::getConnection();
 
-        $error = false;
+    //     $sql = "INSERT INTO `auth` (`id`, `username`, `password`, `email`, `phone`, `blocked`, `active`) 
+    //     VALUES (NULL, '$Username', '$Password', '$email', '$phone', '0', '0')";
 
-        if ($conn->query($sql) === TRUE) {
-        $error = false; // no errors
-        } else {
-        //echo "Error: " . $sql . "<br>" . $conn->error;
-        $error = $conn->error;
-        }
+    //     $error = false;
 
-        $conn->close();
+    //     if ($conn->query($sql) === TRUE) {
+    //     $error = false; // no errors
+    //     } else {
+    //     //echo "Error: " . $sql . "<br>" . $conn->error;
+    //     $error = $conn->error;
+    //     }
 
-        return $error;
-    }
+    //     $conn->close();
+
+    //     return $error;
+    // }
+    
 ?>
 
