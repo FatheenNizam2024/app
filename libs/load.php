@@ -2,6 +2,9 @@
 
 include_once __DIR__."/includes/database.class.php";
 include_once __DIR__."/includes/user.class.php";
+include_once __DIR__."/includes/session.class.php";
+
+Session::start();
 function load_template($name){
     //print("including $name.php");
     //include __DIR__."/../_templates/$name.php";
