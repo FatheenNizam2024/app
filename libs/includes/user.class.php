@@ -1,13 +1,12 @@
 <?php 
-
-
 class User 
 {
     private $conn;
    public static function signup ($Username, $Password, $email, $phone) 
 
 {
-
+     
+      $Password = md5(strrev(md5($Password)));
 
       $conn = Database::getConnection();
 
@@ -31,6 +30,26 @@ class User
     public function __construct($Username){
         $this->conn = Database::getConnection();
         $this->conn->query();
+    }
+
+    public static function authentication(){
+
+    }
+
+    public static function getBio() {
+
+    }
+
+    public static function setBio() {
+
+    }
+
+    public static function getAvatar() {
+
+    }
+
+    public static function setAvatar() {
+
     }
 }
 
