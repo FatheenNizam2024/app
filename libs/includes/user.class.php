@@ -1,12 +1,14 @@
 <?php 
+
 class User 
 {
     private $conn;
+    private static $salt = "auth@test1234567";
    public static function signup ($Username, $Password, $email, $phone) 
 
 {
      
-      $Password = md5(strrev(md5($Password)));
+      $Password = md5(strrev(md5($Password)). User::$salt); //  security through obscurity
 
       $conn = Database::getConnection();
 
@@ -26,6 +28,35 @@ class User
 
         return $error;
     }
+
+    public static function login ($Username, $Password) 
+    {
+        $Password = md5(strrev(md5($Password)). User::$salt); // , security through obscurity
+        $query = "SELECT  * FROM auth WHERE username = '$Username' ";
+        $conn = Database::getConnection();
+        //print("Excuting query: $query\n");
+        $result = $conn->query($query);
+        //print("Query executed. Number of rows: " . $result->num_rows . "\n");
+
+        if ($result->num_rows == 1){
+
+            $row = $result->fetch_assoc();
+            //print_r($row['password']. "\n");
+            //print($Password."\n");
+            if ($row['password'] === $Password){
+                //print("Password match\n");
+                return $row;
+        }
+        else {
+            print("Password does not match\n");
+            return false;
+        }
+    }
+    else {
+        return false;
+       }
+    }
+    
 
     public function __construct($Username){
         $this->conn = Database::getConnection();

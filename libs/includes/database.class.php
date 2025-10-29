@@ -22,7 +22,7 @@ class Database
                 //die("Connection lost: " . $conn->connect_error); 
                 echo "connected failed" . $connection->connect_error;
             } else {
-                echo "connected sucessfully....... assigning new connection";
+                //echo "connected sucessfully....... assigning new connection";
                 Database::$conn = $connection;
                 return Database::$conn; // Return the connection if successful
             }
