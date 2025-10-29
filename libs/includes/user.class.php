@@ -3,12 +3,18 @@
 class User 
 {
     private $conn;
-    private static $salt = "auth@test1234567";
+    //private static $salt = "auth@test1234567";
    public static function signup ($Username, $Password, $email, $phone) 
 
 {
      
-      $Password = md5(strrev(md5($Password)). User::$salt); //  security through obscurity
+      //$Password = md5(strrev(md5($Password)). User::$salt); //  security through obscurity
+
+      $options = [
+        // Increase the bcrypt cost from 12 to 13.
+        'cost' => 10,
+    ];
+        $Password = password_hash($Password, PASSWORD_BCRYPT, $options);
 
       $conn = Database::getConnection();
 
@@ -31,7 +37,8 @@ class User
 
     public static function login ($Username, $Password) 
     {
-        $Password = md5(strrev(md5($Password)). User::$salt); // , security through obscurity
+        //$Password = md5(strrev(md5($Password)). User::$salt); // , security through obscurity
+
         $query = "SELECT  * FROM auth WHERE username = '$Username' ";
         $conn = Database::getConnection();
         //print("Excuting query: $query\n");
@@ -43,12 +50,12 @@ class User
             $row = $result->fetch_assoc();
             //print_r($row['password']. "\n");
             //print($Password."\n");
-            if ($row['password'] === $Password){
+            if (password_verify($Password, $row['password'])) {
                 //print("Password match\n");
                 return $row;
         }
         else {
-            print("Password does not match\n");
+            //print("Password does not match\n");
             return false;
         }
     }
