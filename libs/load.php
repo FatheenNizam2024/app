@@ -4,7 +4,20 @@ include_once __DIR__."/includes/database.class.php";
 include_once __DIR__."/includes/user.class.php";
 include_once __DIR__."/includes/session.class.php";
 
+global $__site_config;
+$__site_config = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/../fatheen-0037/photogramconfig.json'); 
+// $_SERVER['DOCUMENT_ROOT'] is the location of /var/www/html$
+
 Session::start();
+
+function get_config($key, $default = null){
+    global $__site_config;
+    $array = json_decode($__site_config, true);
+    if (isset($array[$key])) {
+        return $array[$key];
+    }
+    return $default;
+}
 function load_template($name){
     //print("including $name.php");
     //include __DIR__."/../_templates/$name.php";
